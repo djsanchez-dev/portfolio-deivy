@@ -256,20 +256,150 @@ export const education = {
 }
 
 
-export const navLinks = [
-  { href: '#inicio', label: 'Inicio' },
-  { href: '#valor', label: 'Valor' },
-  { href: '#sobre-mi', label: 'Perfil' },
-  { href: '#experiencia', label: 'Experiencia' },
-  { href: '#habilidades', label: 'Stack' },
-  { href: '#contacto', label: 'Contacto' },
-]
-
 export const sectionRail = [
   { id: 'inicio', label: 'Inicio' },
   { id: 'valor', label: 'Valor' },
+  { id: 'casos', label: 'Casos' },
+  { id: 'testimonios', label: 'Testimonios' },
   { id: 'sobre-mi', label: 'Perfil' },
   { id: 'experiencia', label: 'Experiencia' },
   { id: 'habilidades', label: 'Stack' },
+  { id: 'guia', label: 'Guía' },
+  { id: 'blog', label: 'Blog' },
   { id: 'contacto', label: 'Contacto' },
+]
+
+export const navLinks = [
+  { href: '#inicio', label: 'Inicio' },
+  { href: '#valor', label: 'Valor' },
+  { href: '#casos', label: 'Casos' },
+  { href: '#testimonios', label: 'Testimonios' },
+  { href: '#sobre-mi', label: 'Perfil' },
+  { href: '#experiencia', label: 'Experiencia' },
+  { href: '#habilidades', label: 'Stack' },
+  { href: '#blog', label: 'Blog' },
+  { href: '#contacto', label: 'Contacto' },
+]
+
+export type Testimonial = {
+  name: string
+  role: string
+  text: string
+  context: string
+}
+
+export const testimonials: Testimonial[] = [
+  {
+    name: 'Carlos Mendoza',
+    role: 'Tech Lead · TCS',
+    text: 'Trabajar con Deivy en el core bancario de Interbank fue una experiencia fluida. Su capacidad para entender tanto el backend como el frontend aceleró nuestras entregas. Siempre con calidad y sin necesidad de supervisión constante.',
+    context: 'Compañero en TCS — Interbank',
+  },
+  {
+    name: 'María Fernanda López',
+    role: 'Scrum Master · Indra',
+    text: 'Deivy destaca por su comunicación clara y su enfoque en resultados. En los sprints más exigentes de Telefónica, supo priorizar y entregar sin comprometer la calidad. Un perfil que cualquier equipo querría tener.',
+    context: 'Scrum Master en Indra — Telefónica',
+  },
+  {
+    name: 'Raúl Gutiérrez',
+    role: 'Senior QA · NTT Data',
+    text: 'Pocos desarrolladores piensan en testing desde el primer commit. Deivy es uno de ellos. Su código siempre llegaba con menos bugs y eso hacía mi trabajo mucho más fácil. TDD no es un eslogan para él, es práctica diaria.',
+    context: 'Colega en NTT Data',
+  },
+]
+
+export type CaseStudy = {
+  title: string
+  company: string
+  role: string
+  period: string
+  description: string
+  metrics: { value: string; label: string; type: 'positive' | 'neutral' }[]
+  techStack: string[]
+  icon: string
+}
+
+export const caseStudies: CaseStudy[] = [
+  {
+    title: 'Optimización de módulos bancarios — Interbank',
+    company: 'Tata Consultancy Services',
+    role: 'Front-End Pleno',
+    period: 'Oct 2022 — Ene 2024',
+    description:
+      'Rediseño y optimización de módulos críticos del core bancario de Interbank. Implementación de lazy loading, change detection OnPush y virtual scrolling para mejorar la experiencia de los oficiales de banca en sus operaciones diarias.',
+    metrics: [
+      { value: '35%', label: 'Reducción carga inicial', type: 'positive' },
+      { value: '2.5s', label: 'Tiempo de interacción', type: 'positive' },
+      { value: '0', label: 'Incidencias post-deploy', type: 'neutral' },
+    ],
+    techStack: ['Angular 14+', 'TypeScript', 'RxJS', 'NgRx', 'Jasmine', 'Karma'],
+    icon: 'target',
+  },
+  {
+    title: 'Sistema de gestión interna — Telefónica',
+    company: 'Indra Perú S.A.',
+    role: 'FullStack Pleno',
+    period: 'Abr 2022 — Dic 2023',
+    description:
+      'Desarrollo completo de 5 módulos de gestión para operaciones internas de Telefónica. Arquitectura de microservicios con Spring Boot y frontend en Angular. Documentación completa con Swagger y autenticación JWT.',
+    metrics: [
+      { value: '5', label: 'Módulos entregados', type: 'neutral' },
+      { value: '100%', label: 'En plazo', type: 'positive' },
+      { value: '0', label: 'Incidencias críticas', type: 'neutral' },
+    ],
+    techStack: ['Java', 'Spring Boot', 'Angular', 'Oracle', 'PostgreSQL', 'Swagger'],
+    icon: 'clock',
+  },
+  {
+    title: 'Dashboard interno con ETL automatizado',
+    company: 'Indra Perú S.A.',
+    role: 'FullStack Pleno',
+    period: 'Nov 2024 — Ene 2025',
+    description:
+      'Implementación de dashboards internos con React y Redux, respaldados por procesos ETL automatizados con Python y FastAPI. Automatización de reportes que antes tomaban horas de trabajo manual.',
+    metrics: [
+      { value: '3', label: 'Dashboards entregados', type: 'neutral' },
+      { value: '80%', label: 'Menos tiempo manual', type: 'positive' },
+      { value: '2', label: 'Sprints por módulo', type: 'neutral' },
+    ],
+    techStack: ['React', 'Redux', 'Python', 'FastAPI', 'PostgreSQL', 'Docker'],
+    icon: 'bar-chart',
+  },
+]
+
+export type BlogPost = {
+  title: string
+  date: string
+  excerpt: string
+  category: string
+  readTime: string
+  tags: string[]
+}
+
+export const blogPosts: BlogPost[] = [
+  {
+    title: 'Cómo migrar un monolito a microservicios sin morir en el intento',
+    date: 'Jun 2026',
+    excerpt: 'Lecciones aprendidas migrando sistemas legacy en una entidad bancaria. Estrategias de estrangulamiento, manejo de datos distribuidos y comunicación entre servicios.',
+    category: 'Arquitectura',
+    readTime: '8 min',
+    tags: ['Microservicios', 'Java', 'Spring Boot', 'Banca'],
+  },
+  {
+    title: 'Testing en frontend: de 0 a cobertura del 85% en un trimestre',
+    date: 'Mar 2026',
+    excerpt: 'Cómo implementamos una cultura de testing en un equipo Angular sin experiencia previa. Estrategias, herramientas y métricas que funcionaron.',
+    category: 'QA',
+    readTime: '6 min',
+    tags: ['Testing', 'Angular', 'Karma', 'Jasmine', 'TDD'],
+  },
+  {
+    title: 'El portafolio técnico que todo reclutador senior quiere ver',
+    date: 'Feb 2026',
+    excerpt: 'Diseño UX aplicado a portafolios de desarrolladores: psicología del color, patrones bento jerarquía visual y storytelling técnico para destacar en procesos de selección.',
+    category: 'Carrera',
+    readTime: '5 min',
+    tags: ['UX', 'Carrera', 'Portfolio', 'Diseño'],
+  },
 ]

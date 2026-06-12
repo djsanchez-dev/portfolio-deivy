@@ -36,7 +36,7 @@ export function Skills() {
     <section id="habilidades" className="section-energy py-24 md:py-32">
       <div className="mx-auto max-w-6xl px-6">
         <SectionHeader
-          number="05"
+          number="06"
           eyebrow="Stack técnico"
           tone="energy"
           title={

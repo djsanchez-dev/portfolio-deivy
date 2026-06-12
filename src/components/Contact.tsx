@@ -1,6 +1,7 @@
 import { CheckCircle2, Download, Mail, Phone, Send } from 'lucide-react'
 import { useState } from 'react'
 import { personal } from '../data/portfolio'
+import { trackEvent } from '../lib/analytics'
 import { cn } from '../lib/utils'
 import { FadeIn } from './motion/FadeIn'
 import { SectionHeader } from './ui/SectionHeader'
@@ -97,7 +98,10 @@ export function Contact() {
                     noValidate
                     onSubmit={(e) => {
                       e.preventDefault()
-                      if (!validate(e.currentTarget)) return
+                      if (!validate(e.currentTarget)) {
+                        trackEvent({ name: 'contact_form_error', data: { field: 'name' } })
+                        return
+                      }
 
                       const form = e.currentTarget
                       const data = new FormData(form)
@@ -109,6 +113,7 @@ export function Contact() {
                         `De: ${name} (${email})\n\n${message}`,
                       )
                       window.location.href = `mailto:${personal.email}?subject=${subject}&body=${body}`
+                      trackEvent({ name: 'contact_form_submit', data: { name: String(name) } })
                       setSubmitted(true)
                     }}
                   >

@@ -2,6 +2,7 @@ import { motion } from 'framer-motion'
 import { useState } from 'react'
 import { Briefcase, ChevronDown, Code2, Lightbulb, Zap } from 'lucide-react'
 import { experience } from '../data/portfolio'
+import { trackEvent } from '../lib/analytics'
 import { cn } from '../lib/utils'
 import { FadeIn } from './motion/FadeIn'
 import { SectionHeader } from './ui/SectionHeader'
@@ -86,7 +87,11 @@ export function NarrativeJourney() {
                       >
                         <button
                           type="button"
-                          onClick={() => setExpanded(isOpen ? null : i)}
+                          onClick={() => {
+                            const next = isOpen ? null : i
+                            setExpanded(next)
+                            trackEvent({ name: next === null ? 'experience_collapse' : 'experience_expand', data: { company: `${job.company} - ${job.role}` } })
+                          }}
                           aria-expanded={isOpen}
                           className="w-full p-6 text-left md:p-8"
                         >
